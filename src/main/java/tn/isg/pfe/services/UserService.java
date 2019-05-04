@@ -1,13 +1,18 @@
 package tn.isg.pfe.services;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
 import tn.isg.pfe.model.Utilisateur;
 
-public interface UserService extends CrudRepository<Utilisateur, Integer> {
+@Service
+public interface UserService {
 
-	@Query("select u from Utilisateur u where prenom=?1 ")
 	public Utilisateur getUserByName(String prenom);
+	
+	public List<Utilisateur> findAll();
 
 }

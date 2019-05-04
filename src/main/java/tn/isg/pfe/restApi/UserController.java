@@ -1,5 +1,7 @@
 package tn.isg.pfe.restApi;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +16,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	//recuperer les requetes httpw
 	@CrossOrigin
-	@RequestMapping("/name")
-	public Utilisateur getName() {
-		return userService.getUserByName("khouloud");
+	@RequestMapping("/allPersons")
+	public List<Utilisateur> getName() {
 		
+		// envoyer les données au service concerné pour le traiter et le retouner au client
+		return (List<Utilisateur>) userService.findAll();
+	
 	}
 }
